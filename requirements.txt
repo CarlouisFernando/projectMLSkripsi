@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+matplotlib
+openpyxl
+yfinance
+beautifulsoup4
+requests
+statsmodels
+xgboost
+lightgbm
+plotly
+kaleido

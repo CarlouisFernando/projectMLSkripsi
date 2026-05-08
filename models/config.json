@@ -1,0 +1,81 @@
+{
+  "target_col": "log_harga",
+  "original_target_col": "harga_emas_antam_idr",
+  "feature_cols": [
+    "log_return",
+    "lag_1",
+    "lag_2",
+    "lag_3",
+    "lag_5",
+    "lag_7",
+    "rolling_mean_7",
+    "rolling_std_7",
+    "rolling_mean_14",
+    "rolling_std_14",
+    "log_xau",
+    "log_kurs",
+    "log_xau_lag1",
+    "log_kurs_lag1",
+    "bi_7drr_rate",
+    "inflasi_yoy_id",
+    "spread_macro",
+    "day_of_week",
+    "month",
+    "quarter"
+  ],
+  "exog_sarimax": [
+    "log_xau",
+    "log_kurs"
+  ],
+  "sarimax_order": [
+    1,
+    1,
+    1
+  ],
+  "sarimax_seasonal_order": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "best_xgb_params": {
+    "n_estimators": 393,
+    "learning_rate": 0.01462677783233291,
+    "max_depth": 5,
+    "subsample": 0.6733770981851532,
+    "colsample_bytree": 0.6229229260629712,
+    "reg_alpha": 9.635570193444867,
+    "reg_lambda": 2.0102616957639583,
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "best_lgb_params": {
+    "n_estimators": 208,
+    "learning_rate": 0.29809911697393254,
+    "max_depth": 7,
+    "num_leaves": 71,
+    "subsample": 0.7045301052546397,
+    "colsample_bytree": 0.6037244622276555,
+    "reg_alpha": 0.022055966549515135,
+    "reg_lambda": 0.18340281663501548,
+    "random_state": 42,
+    "n_jobs": -1,
+    "verbose": -1
+  },
+  "train_end_date": "2026-02-20",
+  "max_horizon": 7,
+  "train_ratio": 0.7,
+  "lags_used": [
+    1,
+    2,
+    3,
+    5,
+    7
+  ],
+  "rolling_windows": [
+    7,
+    14
+  ],
+  "frequency": "D",
+  "use_log_return": true
+}
