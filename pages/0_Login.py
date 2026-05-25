@@ -13,7 +13,7 @@ conn.close()
 ensure_admin_user()
 
 if "user_id" in st.session_state:
-    st.info(f"Anda sudah login sebagai {st.session_state.get('username')}.")
+    st.info(f"Anda sudah login sebagai {st.session_state.get('username')}")
     if st.button("Kembali ke Home"):
         st.switch_page("pages/1_Prediction.py")
     st.stop()
@@ -28,25 +28,28 @@ if menu == "Register":
 
     if st.button("Register"):
         if not username.strip() or not password.strip():
-            st.error("Username dan password tidak boleh kosong.")
+            st.error("Username dan password tidak boleh kosong")
         elif register_user(username, password):
             st.success("Register berhasil!")
         else:
-            st.error("Username sudah ada atau pendaftaran gagal.")
+            st.error("Username sudah ada atau pendaftaran gagal")
 
 elif menu == "Login":
     st.subheader("Login")
+    st.caption("Tekan Enter atau klik tombol Login setelah mengisi username dan password")
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    with st.form("login_form"):
+        username = st.text_input("Username", placeholder="Masukkan username")
+        password = st.text_input("Password", type="password", placeholder="Masukkan password")
+        login_btn = st.form_submit_button("Login")
 
-    if st.button("Login"):
-        user_id = login_user(username, password)
+        if login_btn:
+            user_id = login_user(username, password)
 
-        if user_id:
-            st.session_state.user_id = user_id
-            st.session_state.username = username
-            st.success("Login berhasil!")
-            st.switch_page("pages/1_Prediction.py")
-        else:
-            st.error("Login gagal!")
+            if user_id:
+                st.session_state.user_id = user_id
+                st.session_state.username = username
+                st.success("Login berhasil!")
+                st.switch_page("pages/1_Prediction.py")
+            else:
+                st.error("Login gagal! Username atau password salah")
