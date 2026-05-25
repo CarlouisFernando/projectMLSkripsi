@@ -2,7 +2,7 @@ import streamlit as st
 
 # auth check
 if "user_id" not in st.session_state:
-    st.warning("silakan login terlebih dahulu")
+    st.warning("Silahkan Login Terlebih Dahulu")
     st.stop()
 
 st.title("Help / Manual Penggunaan")
