@@ -43,16 +43,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("Home")
-st.subheader("sistem Forecasting Harga Emas Antam")
+st.subheader("Sistem Forecasting Harga Emas Antam")
 
 st.write("""
-aplikasi ini menggunakan tiga model:
+Aplikasi ini menggunakan tiga model:
 1. SARIMAX
 2. Hybrid SARIMAX-XGBoost
 3. Hybrid SARIMAX-LightGBM
 """)
 
-st.markdown("**variabel eksogen yang digunakan:** XAU/USD, Kurs USD/IDR, Inflasi YoY, BI-7DRR Rate")
+st.markdown("**Variabel Eksogen yang digunakan:** XAU/USD, Kurs USD/IDR, Inflasi YoY, BI-7DRR Rate")
 
 metrics_path = "models/metrics_all_horizons.csv"
 best_path = "models/best_model_per_horizon.csv"
@@ -72,4 +72,4 @@ try:
     st.plotly_chart(fig, use_container_width=True)
 
 except FileNotFoundError:
-    st.warning("file metrik model belum tersedia di folder models")
+    st.warning("File metrik model belum tersedia di folder models")
