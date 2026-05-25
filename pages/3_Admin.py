@@ -3,7 +3,7 @@ from utils.auth import get_all_users, delete_user
 
 # auth check
 if "user_id" not in st.session_state:
-    st.warning("silakan login terlebih dahulu")
+    st.warning("Silahkan Login Terlebih Dahulu")
     st.stop()
 
 if st.session_state.get("username") != "admin":
@@ -35,11 +35,11 @@ else:
     if not usernames:
         st.info("Tidak ada akun pengguna yang dapat dihapus.")
     else:
-        selected_users = st.multiselect("Pilih username untuk dihapus (bisa banyak)", usernames)
+        selected_users = st.multiselect("Pilih username untuk dihapus (bisa pilih beberapa akun langsung)", usernames)
 
         if st.button("Hapus akun pengguna terpilih", use_container_width=True):
             if not selected_users:
-                st.warning("Silakan pilih setidaknya satu akun untuk dihapus.")
+                st.warning("Silahkan pilih setidaknya satu akun untuk dihapus.")
             else:
                 deleted_count = 0
                 failed_users = []
@@ -50,7 +50,7 @@ else:
                         failed_users.append(username)
                 
                 if deleted_count > 0:
-                    st.success(f"{deleted_count} akun berhasil dihapus.")
+                    st.success(f"{deleted_count} Akun berhasil dihapus.")
                     st.rerun()
                 if failed_users:
                     st.error(f"Gagal menghapus akun: {', '.join(failed_users)}")
