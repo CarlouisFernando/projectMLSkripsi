@@ -745,7 +745,7 @@ if st.session_state.pred_df is not None and st.session_state.master_df is not No
                 lgb_pred = row["Hybrid_LightGBM"]
 
                 eval_data.append({
-                    "Tanggal": row["pred_date"].date(),
+                    "Tanggal": row["pred_date"].strftime("%d-%m-%Y"),
                     "Aktual": actual,
                     "Pred SARIMAX": sarimax_pred,
                     "Error SARIMAX": actual - sarimax_pred,
