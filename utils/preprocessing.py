@@ -40,7 +40,8 @@ def build_master_dataframe(antam_df, usd_df, static_df):
     df["log_harga"] = np.log(df["harga_emas_antam_idr"])
     df["log_kurs"] = np.log(df["kurs_usd_idr"])
     df["log_xau"] = np.log(df["xau_usd"])
-    df["log_return"] = df["log_harga"].diff()
+    #df["log_return"] = df["log_harga"].diff()
+    df["log_return_lag1"] = df["log_harga"].diff().shift(1)
 
     for lag in [1, 2, 3, 5, 7]:
         df[f"lag_{lag}"] = df["log_harga"].shift(lag)
