@@ -43,7 +43,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("Home")
-st.subheader("Sistem Forecasting Harga Emas Antam")
+st.subheader("Disclaimer : Disclaimer: Aplikasi ini dibuat untuk keperluan penelitian dan perancangan skripsi. Hasil prediksi yang ditampilkan hanya bersifat informatif dan eksperimental serta tidak dapat dijadikan sebagai dasar atau rekomendasi investasi. Segala keputusan investasi yang dilakukan merupakan tanggung jawab masing-masing pengguna.")
 
 st.write("""
 Aplikasi ini menggunakan tiga model:
