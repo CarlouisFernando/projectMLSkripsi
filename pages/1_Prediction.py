@@ -179,14 +179,14 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
         
         # Prefer user-provided template files under templates/ if available
         template_dir = "templates"
-        xau_path = os.path.join("template", "Template_XAU.csv")
+        xau_path = os.path.join("template", "Template_XAU.pdf")
         if os.path.exists(xau_path):
             with open(xau_path, "rb") as f:
                 data_bytes = f.read()
             st.download_button(
                 label="Download contoh yg benar (XAU/USD)",
                 data=data_bytes,
-                file_name="template_xau_usd.csv",
+                file_name="template_xau_usd.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_xau_template",
@@ -195,7 +195,7 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
             st.download_button(
                 label="Download contoh yg benar (XAU/USD)",
                 data=xau_csv,
-                file_name="template_xau_usd.csv",
+                file_name="template_xau_usd.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_xau_template",
@@ -203,14 +203,14 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
 
     with t2:
         st.markdown("**Template Inflasi YoY**")
-        infl_path = os.path.join("template", "Template_Inflasi.csv")
+        infl_path = os.path.join("template", "Template_Inflasi.pdf")
         if os.path.exists(infl_path):
             with open(infl_path, "rb") as f:
                 data_bytes = f.read()
             st.download_button(
                 label="Download contoh yg benar (Inflasi)",
                 data=data_bytes,
-                file_name="Template_Inflasi.csv",
+                file_name="Template_Inflasi.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_infl_template",
@@ -219,7 +219,7 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
             st.download_button(
                 label="Download contoh yg benar (Inflasi)",
                 data=infl_csv,
-                file_name="template_inflasi.csv",
+                file_name="template_inflasi.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_infl_template",
@@ -227,14 +227,14 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
 
     with t3:
         st.markdown("**Template BI Rate**")
-        bi_path = os.path.join("template", "Template_BI.csv")
+        bi_path = os.path.join("template", "Template_BI.pdf")
         if os.path.exists(bi_path):
             with open(bi_path, "rb") as f:
                 data_bytes = f.read()
             st.download_button(
                 label="Download contoh yg benar (BI Rate)",
                 data=data_bytes,
-                file_name="template_bi_rate.csv",
+                file_name="template_bi_rate.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_bi_template",
@@ -243,7 +243,7 @@ with st.expander("Update Data Static Manual per Variabel", expanded=False):
             st.download_button(
                 label="Download contoh yg benar (BI Rate)",
                 data=bi_csv,
-                file_name="template_bi_rate.csv",
+                file_name="template_bi_rate.pdf",
                 mime="text/csv",
                 use_container_width=True,
                 key="dl_bi_template",
@@ -745,7 +745,7 @@ if st.session_state.pred_df is not None and st.session_state.master_df is not No
                 lgb_pred = row["Hybrid_LightGBM"]
 
                 eval_data.append({
-                    "Tanggal": row["pred_date"].strftime("%d-%m-%Y"),
+                    "Tanggal": row["pred_date"].date(),
                     "Aktual": actual,
                     "Pred SARIMAX": sarimax_pred,
                     "Error SARIMAX": actual - sarimax_pred,
@@ -770,6 +770,7 @@ if st.session_state.pred_df is not None and st.session_state.master_df is not No
                 mae = errors.abs().mean()
                 rmse = (errors**2).mean()**0.5
                 mape = (errors.abs() / eval_df["Aktual"]).mean() * 100
+                
 
                 metrics.append({
                     "Model": model,
